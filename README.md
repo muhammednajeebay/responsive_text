@@ -1,39 +1,91 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# ResponsiveText
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+A customizable text widget that dynamically scales its font size based on screen size or container dimensions, ensuring legibility across devices.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- **Dynamic Font Scaling**: Automatically adjusts font size based on available space
+- **Min/Max Bounds**: Set minimum and maximum font size constraints
+- **Multi-line Support**: Control text wrapping with maxLines parameter
+- **Adaptive Spacing**: Customize text alignment and direction
+- **Overflow Handling**: Choose how text behaves when it doesn't fit
+- **Screen Size Awareness**: Scale text based on device screen dimensions
+- **Container Awareness**: Adapt text to fit within its container
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Add the package to your `pubspec.yaml`:
+
+```yaml
+dependencies:
+  responsive_text: ^0.0.1
+```
+
+Then run:
+
+```bash
+flutter pub get
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+### Basic Usage
 
 ```dart
-const like = 'sample';
+import 'package:responsive_text/responsive_text.dart';
+
+ResponsiveText(
+  'Hello World',
+  minFontSize: 12.0,
+  maxFontSize: 24.0,
+)
+```
+
+### Container-based Scaling
+
+```dart
+Container(
+  width: 200,
+  child: ResponsiveText(
+    'This text will scale to fit the container width',
+    minFontSize: 10.0,
+    maxFontSize: 20.0,
+    adaptToContainer: true,
+  ),
+)
+```
+
+### Screen-based Scaling
+
+```dart
+ResponsiveText(
+  'This text scales based on screen width',
+  minFontSize: 14.0,
+  maxFontSize: 32.0,
+  adaptToScreenWidth: true,
+)
+```
+
+### With Overflow Handling
+
+```dart
+ResponsiveText(
+  'This text will show ellipsis if it overflows',
+  minFontSize: 12.0,
+  maxFontSize: 18.0,
+  maxLines: 2,
+  overflow: TextOverflow.ellipsis,
+  onFontSizeChanged: (didOverflow) {
+    if (didOverflow) {
+      print('Text is overflowing!');
+    }
+  },
+)
 ```
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+- **GitHub Repository**: [https://github.com/yourusername/responsive_text](https://github.com/yourusername/responsive_text)
+- **Bug Reports**: Please file issues at the GitHub repository
+- **Feature Requests**: We welcome suggestions for new features
+- **Contributions**: Pull requests are welcome
