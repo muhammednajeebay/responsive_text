@@ -1,3 +1,11 @@
+## 0.0.2 - Unreleased
+
+* Added animation support for smooth font size transitions
+* Enhanced rich text support with TextSpan
+* Added comprehensive example app
+* Improved test coverage
+* Added ResponsiveTextWrapper for more flexible usage
+
 ## 0.0.1
 
 Initial release of the ResponsiveText package with the following features:

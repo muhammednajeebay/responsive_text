@@ -1,9 +1,9 @@
 name: responsive_text
 description: "A customizable text widget that dynamically scales its font size based on screen size or container dimensions, ensuring legibility across devices."
 version: 0.0.1
-# homepage: https://github.com/yourusername/responsive_text
-# repository: https://github.com/yourusername/responsive_text
-# issue_tracker: https://github.com/yourusername/responsive_text/issues
+# homepage: https://github.com/najeebnaju512/responsive_text
+# repository: https://github.com/najeebnaju512/responsive_text
+# issue_tracker: https://github.com/najeebnaju512/responsive_text/issues
 
 environment:
   sdk: ^3.8.1
