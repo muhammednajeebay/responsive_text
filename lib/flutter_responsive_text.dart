@@ -1,4 +1,4 @@
-library responsive_text;
+library flutter_responsive_text;
 
 import 'package:flutter/material.dart';
 

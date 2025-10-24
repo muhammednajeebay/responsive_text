@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_responsive_text/responsive_text.dart';
+import 'package:flutter_responsive_text/flutter_responsive_text.dart';
 
 void main() {
   runApp(const ResponsiveTextDemo());

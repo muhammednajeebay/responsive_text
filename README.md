@@ -32,7 +32,7 @@ flutter pub get
 ### Basic Usage
 
 ```dart
-import 'package:flutter_responsive_text/responsive_text.dart';
+import 'package:flutter_responsive_text/flutter_responsive_text.dart';
 
 ResponsiveText(
   'Hello World',
