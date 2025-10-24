@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_responsive_text/flutter_responsive_text.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:responsive_text_plus/flutter_responsive_text.dart';
 
 void main() {
   testWidgets('ResponsiveText renders correctly', (WidgetTester tester) async {
