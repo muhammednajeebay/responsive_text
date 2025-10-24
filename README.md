@@ -18,7 +18,7 @@ Add the package to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  responsive_text: ^1.0.0
+  flutter_responsive_text: ^1.0.0
 ```
 
 Then run:
@@ -32,7 +32,7 @@ flutter pub get
 ### Basic Usage
 
 ```dart
-import 'package:responsive_text/responsive_text.dart';
+import 'package:flutter_responsive_text/responsive_text.dart';
 
 ResponsiveText(
   'Hello World',

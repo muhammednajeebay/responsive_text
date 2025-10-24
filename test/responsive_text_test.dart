@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_responsive_text/responsive_text.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:responsive_text/responsive_text.dart';
 
 void main() {
   testWidgets('ResponsiveText renders correctly', (WidgetTester tester) async {
@@ -26,7 +26,7 @@ void main() {
   testWidgets('ResponsiveText adapts to container width', (WidgetTester tester) async {
     // Build with constrained width
     await tester.pumpWidget(
-      MaterialApp(
+      const MaterialApp(
         home: Scaffold(
           body: Center(
             child: SizedBox(
@@ -54,13 +54,13 @@ void main() {
   testWidgets('ResponsiveText.rich renders correctly', (WidgetTester tester) async {
     // Build our app with rich text
     await tester.pumpWidget(
-      MaterialApp(
+      const MaterialApp(
         home: Scaffold(
           body: Center(
             child: ResponsiveText.rich(
               TextSpan(
                 text: 'Hello ',
-                children: const [
+                children: [
                   TextSpan(
                     text: 'World',
                     style: TextStyle(fontWeight: FontWeight.bold),
@@ -115,13 +115,13 @@ void main() {
   testWidgets('ResponsiveTextWrapper applies configuration to children', (WidgetTester tester) async {
     // Build with wrapper
     await tester.pumpWidget(
-      MaterialApp(
+      const MaterialApp(
         home: Scaffold(
           body: Center(
             child: ResponsiveTextWrapper(
               minFontSize: 12.0,
               maxFontSize: 24.0,
-              child: const Text('Test'),
+              child: Text('Test'),
             ),
           ),
         ),

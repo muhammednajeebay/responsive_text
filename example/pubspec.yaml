@@ -9,8 +9,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  responsive_text:
-    path: ../
+  flutter_responsive_text:
+  path: ../
+publish_to: none
 
 dev_dependencies:
   flutter_test:
