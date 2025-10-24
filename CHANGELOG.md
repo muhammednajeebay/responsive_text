@@ -1,3 +1,10 @@
+## 1.0.2
+
+* Fixed private type in public API linting issue
+* Made ResponsiveTextWrapperInherited class public for better API compliance
+* Improved code quality and static analysis compliance
+* Enhanced pub.dev package scoring
+
 ## 1.0.1
 
 * Added animation support for smooth font size transitions

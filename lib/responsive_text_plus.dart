@@ -384,7 +384,7 @@ class ResponsiveTextWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _ResponsiveTextWrapperInherited(
+    return ResponsiveTextWrapperInherited(
       minFontSize: minFontSize,
       maxFontSize: maxFontSize,
       stepGranularity: stepGranularity,
@@ -396,13 +396,13 @@ class ResponsiveTextWrapper extends StatelessWidget {
   }
 
   /// Gets the responsive text configuration from the context.
-  static _ResponsiveTextWrapperInherited? of(BuildContext context) {
+  static ResponsiveTextWrapperInherited? of(BuildContext context) {
     return context
-        .dependOnInheritedWidgetOfExactType<_ResponsiveTextWrapperInherited>();
+        .dependOnInheritedWidgetOfExactType<ResponsiveTextWrapperInherited>();
   }
 }
 
-class _ResponsiveTextWrapperInherited extends InheritedWidget {
+class ResponsiveTextWrapperInherited extends InheritedWidget {
   final double minFontSize;
   final double maxFontSize;
   final double stepGranularity;
@@ -410,7 +410,8 @@ class _ResponsiveTextWrapperInherited extends InheritedWidget {
   final bool adaptToContainer;
   final void Function(bool didOverflow)? onFontSizeChanged;
 
-  const _ResponsiveTextWrapperInherited({
+  const ResponsiveTextWrapperInherited({
+    super.key,
     required super.child,
     required this.minFontSize,
     required this.maxFontSize,
@@ -418,10 +419,10 @@ class _ResponsiveTextWrapperInherited extends InheritedWidget {
     required this.adaptToScreenWidth,
     required this.adaptToContainer,
     this.onFontSizeChanged,
-  }) : super();
+  });
 
   @override
-  bool updateShouldNotify(_ResponsiveTextWrapperInherited oldWidget) {
+  bool updateShouldNotify(ResponsiveTextWrapperInherited oldWidget) {
     return minFontSize != oldWidget.minFontSize ||
         maxFontSize != oldWidget.maxFontSize ||
         stepGranularity != oldWidget.stepGranularity ||
