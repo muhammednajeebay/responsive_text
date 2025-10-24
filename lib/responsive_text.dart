@@ -94,7 +94,7 @@ class ResponsiveText extends StatefulWidget {
   /// The [textSpan] parameter must not be null.
   const ResponsiveText.rich(
     this.textSpan, {
-    Key? key,
+    super.key,
     this.minFontSize = 12.0,
     this.maxFontSize = 32.0,
     this.stepGranularity = 1.0,
@@ -115,8 +115,7 @@ class ResponsiveText extends StatefulWidget {
         assert(maxFontSize >= minFontSize),
         assert(stepGranularity > 0),
         text = '',
-        style = null,
-        super(key: key);
+        style = null;
 
   /// The text span to display for rich text.
   final TextSpan? textSpan;
@@ -125,7 +124,8 @@ class ResponsiveText extends StatefulWidget {
   State<ResponsiveText> createState() => _ResponsiveTextState();
 }
 
-class _ResponsiveTextState extends State<ResponsiveText> with SingleTickerProviderStateMixin {
+class _ResponsiveTextState extends State<ResponsiveText>
+    with SingleTickerProviderStateMixin {
   double _effectiveFontSize = 0.0;
   bool _didOverflow = false;
   late AnimationController _animationController;
@@ -152,7 +152,7 @@ class _ResponsiveTextState extends State<ResponsiveText> with SingleTickerProvid
     // Get the default text style from context
     final DefaultTextStyle defaultTextStyle = DefaultTextStyle.of(context);
     TextStyle effectiveTextStyle = widget.style ?? defaultTextStyle.style;
-    
+
     // Calculate the font size based on adaptation settings
     if (widget.adaptToScreenWidth) {
       final newFontSize = _calculateScreenBasedFontSize(context);
@@ -164,24 +164,24 @@ class _ResponsiveTextState extends State<ResponsiveText> with SingleTickerProvid
             constraints,
             effectiveTextStyle,
           );
-          
+
           _updateFontSize(newFontSize, effectiveTextStyle);
-          
+
           return _buildAnimatedText(effectiveTextStyle);
         },
       );
     } else {
-      final newFontSize = effectiveTextStyle.fontSize ?? 
-          defaultTextStyle.style.fontSize ?? 
+      final newFontSize = effectiveTextStyle.fontSize ??
+          defaultTextStyle.style.fontSize ??
           14.0;
       _updateFontSize(newFontSize, effectiveTextStyle);
     }
-    
+
     // Apply the calculated font size to the text style when not using LayoutBuilder
     if (!widget.adaptToContainer) {
       return _buildAnimatedText(effectiveTextStyle);
     }
-    
+
     return Container(); // This is never reached but needed for compilation
   }
 
@@ -231,14 +231,14 @@ class _ResponsiveTextState extends State<ResponsiveText> with SingleTickerProvid
         recognizer: widget.textSpan!.recognizer,
         semanticsLabel: widget.textSpan!.semanticsLabel,
       );
-      
+
       return Text.rich(
         effectiveTextSpan,
         textAlign: widget.textAlign,
         textDirection: widget.textDirection,
         softWrap: widget.softWrap,
         overflow: widget.overflow,
-        textScaleFactor: widget.textScaleFactor,
+        textScaler: TextScaler.linear(widget.textScaleFactor),
         maxLines: widget.maxLines,
       );
     } else {
@@ -250,7 +250,7 @@ class _ResponsiveTextState extends State<ResponsiveText> with SingleTickerProvid
         textDirection: widget.textDirection,
         softWrap: widget.softWrap,
         overflow: widget.overflow,
-        textScaleFactor: widget.textScaleFactor,
+        textScaler: TextScaler.linear(widget.textScaleFactor),
         maxLines: widget.maxLines,
       );
     }
@@ -259,75 +259,72 @@ class _ResponsiveTextState extends State<ResponsiveText> with SingleTickerProvid
   double _calculateScreenBasedFontSize(BuildContext context) {
     // Get screen width
     final screenWidth = MediaQuery.of(context).size.width;
-    
+
     // Calculate font size based on screen width
     // This is a simple linear interpolation between min and max font sizes
     // based on screen width between 320 (small phone) and 1200 (large tablet/desktop)
     const minScreenWidth = 320.0;
     const maxScreenWidth = 1200.0;
-    
-    final screenWidthFactor = (screenWidth - minScreenWidth) / 
-        (maxScreenWidth - minScreenWidth);
-    
-    final calculatedSize = widget.minFontSize + 
-        (widget.maxFontSize - widget.minFontSize) * 
-        screenWidthFactor.clamp(0.0, 1.0);
-    
+
+    final screenWidthFactor =
+        (screenWidth - minScreenWidth) / (maxScreenWidth - minScreenWidth);
+
+    final calculatedSize = widget.minFontSize +
+        (widget.maxFontSize - widget.minFontSize) *
+            screenWidthFactor.clamp(0.0, 1.0);
+
     // Round to the nearest step
-    final steppedSize = (calculatedSize / widget.stepGranularity).round() * 
+    final steppedSize = (calculatedSize / widget.stepGranularity).round() *
         widget.stepGranularity;
-    
+
     return steppedSize.clamp(widget.minFontSize, widget.maxFontSize);
   }
 
   double _calculateContainerBasedFontSize(
-    BoxConstraints constraints, 
+    BoxConstraints constraints,
     TextStyle style,
   ) {
-    // Start with the maximum font size
-    double fontSize = widget.maxFontSize;
-    
     // Calculate available width
     final availableWidth = constraints.maxWidth;
-    
+
     // Binary search to find the largest font size that fits
     double min = widget.minFontSize;
     double max = widget.maxFontSize;
-    
+
     while (max - min > widget.stepGranularity / 2) {
       final mid = (min + max) / 2;
       final testStyle = style.copyWith(fontSize: mid);
-      
+
       final didExceed = _textExceedsConstraints(
-        availableWidth, 
+        availableWidth,
         testStyle,
       );
-      
+
       if (didExceed) {
         max = mid;
       } else {
         min = mid;
       }
     }
-    
+
     // Check if text overflows at the calculated size
     final finalSize = min;
     final testStyle = style.copyWith(fontSize: finalSize);
-    
+
     final didOverflow = _textExceedsConstraints(
-      availableWidth, 
+      availableWidth,
       testStyle,
     );
-    
+
     // Notify if overflow state changed
     if (didOverflow != _didOverflow) {
       _didOverflow = didOverflow;
       widget.onFontSizeChanged?.call(didOverflow);
     }
-    
+
     return finalSize;
   }
-  
+
   bool _textExceedsConstraints(double maxWidth, TextStyle style) {
     final textPainter = TextPainter(
       text: widget.textSpan != null
@@ -340,11 +337,10 @@ class _ResponsiveTextState extends State<ResponsiveText> with SingleTickerProvid
       textDirection: widget.textDirection ?? TextDirection.ltr,
       maxLines: widget.maxLines,
     );
-    
+
     textPainter.layout(maxWidth: maxWidth);
-    
-    return textPainter.didExceedMaxLines || 
-        textPainter.width > maxWidth;
+
+    return textPainter.didExceedMaxLines || textPainter.width > maxWidth;
   }
 }
 
@@ -355,28 +351,28 @@ class _ResponsiveTextState extends State<ResponsiveText> with SingleTickerProvid
 class ResponsiveTextWrapper extends StatelessWidget {
   /// The child widget to make responsive.
   final Widget child;
-  
+
   /// The minimum font size constraint to use.
   final double minFontSize;
-  
+
   /// The maximum font size constraint to use.
   final double maxFontSize;
-  
+
   /// The step size in which the font size is being adjusted.
   final double stepGranularity;
-  
+
   /// Whether to adapt font size based on screen width.
   final bool adaptToScreenWidth;
-  
+
   /// Whether to adapt font size based on container width.
   final bool adaptToContainer;
-  
+
   /// Optional callback when text overflows or changes size.
   final void Function(bool didOverflow)? onFontSizeChanged;
 
   /// Creates a responsive text wrapper.
   const ResponsiveTextWrapper({
-    Key? key,
+    super.key,
     required this.child,
     this.minFontSize = 12.0,
     this.maxFontSize = 32.0,
@@ -384,7 +380,7 @@ class ResponsiveTextWrapper extends StatelessWidget {
     this.adaptToScreenWidth = false,
     this.adaptToContainer = true,
     this.onFontSizeChanged,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -398,10 +394,11 @@ class ResponsiveTextWrapper extends StatelessWidget {
       child: child,
     );
   }
-  
+
   /// Gets the responsive text configuration from the context.
   static _ResponsiveTextWrapperInherited? of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<_ResponsiveTextWrapperInherited>();
+    return context
+        .dependOnInheritedWidgetOfExactType<_ResponsiveTextWrapperInherited>();
   }
 }
 
@@ -414,15 +411,14 @@ class _ResponsiveTextWrapperInherited extends InheritedWidget {
   final void Function(bool didOverflow)? onFontSizeChanged;
 
   const _ResponsiveTextWrapperInherited({
-    Key? key,
-    required Widget child,
+    required super.child,
     required this.minFontSize,
     required this.maxFontSize,
     required this.stepGranularity,
     required this.adaptToScreenWidth,
     required this.adaptToContainer,
     this.onFontSizeChanged,
-  }) : super(key: key, child: child);
+  }) : super();
 
   @override
   bool updateShouldNotify(_ResponsiveTextWrapperInherited oldWidget) {
