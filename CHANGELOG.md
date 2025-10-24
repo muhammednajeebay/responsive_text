@@ -1,3 +1,11 @@
+## 1.0.0
+
+* Updated package metadata for pub.dev publication
+* Enhanced package description and documentation
+* Added proper repository and homepage links
+* Updated dependencies and SDK constraints
+* Added topics for better discoverability
+
 ## 0.0.2 - Unreleased
 
 * Added animation support for smooth font size transitions

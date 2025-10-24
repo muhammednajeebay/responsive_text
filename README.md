@@ -18,7 +18,7 @@ Add the package to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  responsive_text: ^0.0.1
+  responsive_text: ^1.0.0
 ```
 
 Then run:
@@ -85,7 +85,7 @@ ResponsiveText(
 
 ## Additional information
 
-- **GitHub Repository**: [https://github.com/muhammednajeebay/responsive_text](https://github.com/muhammednajeebay/responsive_text)
+- **GitHub Repository**: [Click Here](https://github.com/muhammednajeebay/responsive_text)
 - **Bug Reports**: Please file issues at the GitHub repository
 - **Feature Requests**: We welcome suggestions for new features
 - **Contributions**: Pull requests are welcome
