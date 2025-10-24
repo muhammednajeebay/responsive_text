@@ -12,10 +12,7 @@ class ResponsiveTextDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'ResponsiveText Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        useMaterial3: true,
-      ),
+      theme: ThemeData(primarySwatch: Colors.blue, useMaterial3: true),
       home: const HomePage(),
     );
   }
@@ -42,18 +39,19 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('ResponsiveText Demo'),
-      ),
+      appBar: AppBar(title: const Text('ResponsiveText Demo')),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Demo section
-            const Text('Demo', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+            const Text(
+              'Demo',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
             const SizedBox(height: 16),
-            
+
             // Container with responsive text
             Center(
               child: Container(
@@ -76,7 +74,8 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                             TextSpan(
-                              text: ' with responsive sizing that adapts to container width.',
+                              text:
+                                  ' with responsive sizing that adapts to container width.',
                             ),
                           ],
                         ),
@@ -102,13 +101,16 @@ class _HomePageState extends State<HomePage> {
                       ),
               ),
             ),
-            
+
             const SizedBox(height: 32),
-            
+
             // Controls section
-            const Text('Controls', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+            const Text(
+              'Controls',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
             const SizedBox(height: 16),
-            
+
             // Container width slider
             const Text('Container Width'),
             Slider(
@@ -123,7 +125,7 @@ class _HomePageState extends State<HomePage> {
                 });
               },
             ),
-            
+
             // Min font size slider
             const Text('Min Font Size'),
             Slider(
@@ -138,7 +140,7 @@ class _HomePageState extends State<HomePage> {
                 });
               },
             ),
-            
+
             // Max font size slider
             const Text('Max Font Size'),
             Slider(
@@ -153,7 +155,7 @@ class _HomePageState extends State<HomePage> {
                 });
               },
             ),
-            
+
             // Adaptation options
             const Text('Adaptation Mode'),
             Row(
@@ -188,7 +190,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
-            
+
             // Animation toggle
             CheckboxListTile(
               title: const Text('Animate Size Changes'),
@@ -199,7 +201,7 @@ class _HomePageState extends State<HomePage> {
                 });
               },
             ),
-            
+
             // Rich text toggle
             CheckboxListTile(
               title: const Text('Use Rich Text'),
@@ -210,7 +212,7 @@ class _HomePageState extends State<HomePage> {
                 });
               },
             ),
-            
+
             // Max lines options
             const Text('Max Lines'),
             SegmentedButton<int?>(
@@ -227,14 +229,17 @@ class _HomePageState extends State<HomePage> {
                 });
               },
             ),
-            
+
             // Overflow options
             const SizedBox(height: 16),
             const Text('Overflow Handling'),
             SegmentedButton<TextOverflow>(
               segments: const [
                 ButtonSegment(value: TextOverflow.clip, label: Text('Clip')),
-                ButtonSegment(value: TextOverflow.ellipsis, label: Text('Ellipsis')),
+                ButtonSegment(
+                  value: TextOverflow.ellipsis,
+                  label: Text('Ellipsis'),
+                ),
                 ButtonSegment(value: TextOverflow.fade, label: Text('Fade')),
               ],
               selected: {_overflow},
@@ -244,20 +249,26 @@ class _HomePageState extends State<HomePage> {
                 });
               },
             ),
-            
+
             const SizedBox(height: 32),
-            
+
             // Comparison section
-            const Text('Comparison', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+            const Text(
+              'Comparison',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
             const SizedBox(height: 16),
-            
+
             // Regular Text vs ResponsiveText
             Row(
               children: [
                 Expanded(
                   child: Column(
                     children: [
-                      const Text('Regular Text', style: TextStyle(fontWeight: FontWeight.bold)),
+                      const Text(
+                        'Regular Text',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                       const SizedBox(height: 8),
                       Container(
                         padding: const EdgeInsets.all(16),
@@ -277,7 +288,10 @@ class _HomePageState extends State<HomePage> {
                 Expanded(
                   child: Column(
                     children: [
-                      const Text('ResponsiveText', style: TextStyle(fontWeight: FontWeight.bold)),
+                      const Text(
+                        'ResponsiveText',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                       const SizedBox(height: 8),
                       Container(
                         padding: const EdgeInsets.all(16),
