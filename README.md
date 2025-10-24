@@ -85,7 +85,7 @@ ResponsiveText(
 
 ## Additional information
 
-- **GitHub Repository**: [https://github.com/najeebnaju512/responsive_text](https://github.com/najeebnaju512/responsive_text)
+- **GitHub Repository**: [https://github.com/muhammednajeebay/responsive_text](https://github.com/muhammednajeebay/responsive_text)
 - **Bug Reports**: Please file issues at the GitHub repository
 - **Feature Requests**: We welcome suggestions for new features
 - **Contributions**: Pull requests are welcome
