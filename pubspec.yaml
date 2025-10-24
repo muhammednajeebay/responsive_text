@@ -1,9 +1,8 @@
 name: responsive_text_plus
-description: "ResponsiveText is a versatile Flutter widget for responsive text scaling, offering customizable font size adaptation based on screen dimensions, perfect for enhancing text readability across devices."
-version: 1.0.0
+description: "A customizable text widget that dynamically scales its font size based on screen size or container dimensions, ensuring legibility across devices."
+version: 1.0.1
 homepage: https://github.com/muhammednajeebay/responsive_text
 repository: https://github.com/muhammednajeebay/responsive_text
-topics: [responsive, text, scaling, ui, flutter]
 
 environment:
   sdk: ">=3.4.3 <4.0.0"

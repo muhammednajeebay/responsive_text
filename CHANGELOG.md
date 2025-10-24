@@ -1,12 +1,4 @@
-## 1.0.0
-
-* Updated package metadata for pub.dev publication
-* Enhanced package description and documentation
-* Added proper repository and homepage links
-* Updated dependencies and SDK constraints
-* Added topics for better discoverability
-
-## 0.0.2 - Unreleased
+## 1.0.1
 
 * Added animation support for smooth font size transitions
 * Enhanced rich text support with TextSpan
@@ -14,7 +6,7 @@
 * Improved test coverage
 * Added ResponsiveTextWrapper for more flexible usage
 
-## 0.0.1
+## 1.0.0
 
 Initial release of the ResponsiveText package with the following features:
 
