@@ -10,7 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_responsive_text:
-  path: ../
+    path: ../
 publish_to: none
 
 dev_dependencies:
