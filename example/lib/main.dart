@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_text_plus/flutter_responsive_text.dart';
+import 'package:responsive_text_plus/responsive_text_plus.dart';
 
 
 void main() {
