@@ -2,6 +2,12 @@
 
 A customizable text widget that dynamically scales its font size based on screen size or container dimensions, ensuring legibility across devices.
 
+## 🚀 Live Demo
+
+Try the interactive demo to see ResponsiveText in action:
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Try%20It%20Now-blue?style=for-the-badge)](https://muhammednajeebay.github.io/responsive_text/)
+
 ## Features
 
 - **Dynamic Font Scaling**: Automatically adjusts font size based on available space
@@ -18,7 +24,7 @@ Add the package to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flutter_responsive_text: ^1.0.2
+  flutter_responsive_text: ^1.0.3
 ```
 
 Then run:

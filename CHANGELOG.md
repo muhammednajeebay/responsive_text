@@ -1,3 +1,9 @@
+## 1.0.3
+
+* Added validation to prevent both `adaptToScreenWidth` and `adaptToContainer` from being true simultaneously
+* Enhanced error handling with clear assertion messages for invalid parameter combinations
+* Improved API consistency between ResponsiveText and ResponsiveTextWrapper classes
+
 ## 1.0.2
 
 * Fixed private type in public API linting issue

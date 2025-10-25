@@ -88,6 +88,22 @@ class _HomePageState extends State<HomePage> {
                         maxLines: _maxLines,
                         overflow: _overflow,
                         textAlign: TextAlign.center,
+                        onFontSizeChanged: (didOverflow) {
+                          if (didOverflow) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Text overflowed'),
+                              ),
+                            );
+                          }
+                          else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Text did not overflow'),
+                              ),
+                            );
+                          }
+                        },
                       )
                     : ResponsiveText(
                         'This is a responsive text that adapts to ${_adaptToContainer ? 'container' : 'screen'} width.',
@@ -99,6 +115,7 @@ class _HomePageState extends State<HomePage> {
                         maxLines: _maxLines,
                         overflow: _overflow,
                         textAlign: TextAlign.center,
+
                       ),
               ),
             ),
@@ -305,6 +322,33 @@ class _HomePageState extends State<HomePage> {
                           minFontSize: 10,
                           maxFontSize: 18,
                           adaptToContainer: true,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    children: [
+                      const Text(
+                        'ResponsiveText',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 8),
+                      Container(
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.blue),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: const ResponsiveText(
+                          'This is a responsive text widget that adapts to Screen width.',
+                          minFontSize: 10,
+                          maxFontSize: 18,
+                          adaptToContainer: false,
+                          adaptToScreenWidth: true,
                           textAlign: TextAlign.center,
                         ),
                       ),

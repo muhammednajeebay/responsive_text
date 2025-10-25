@@ -87,6 +87,10 @@ class ResponsiveText extends StatefulWidget {
         assert(maxFontSize > 0),
         assert(maxFontSize >= minFontSize),
         assert(stepGranularity > 0),
+        assert(
+            !(adaptToScreenWidth && adaptToContainer),
+            'adaptToScreenWidth and adaptToContainer cannot both be true. '
+            'Exactly one must be true.'),
         textSpan = null;
 
   /// Creates a responsive text widget with a [TextSpan].
@@ -114,6 +118,10 @@ class ResponsiveText extends StatefulWidget {
         assert(maxFontSize > 0),
         assert(maxFontSize >= minFontSize),
         assert(stepGranularity > 0),
+        assert(
+            !(adaptToScreenWidth && adaptToContainer),
+            'adaptToScreenWidth and adaptToContainer cannot both be true. '
+            'Exactly one must be true.'),
         text = '',
         style = null;
 
@@ -380,7 +388,10 @@ class ResponsiveTextWrapper extends StatelessWidget {
     this.adaptToScreenWidth = false,
     this.adaptToContainer = true,
     this.onFontSizeChanged,
-  });
+  }) : assert(
+            adaptToScreenWidth != adaptToContainer,
+            'adaptToScreenWidth and adaptToContainer cannot have the same value. '
+            'Exactly one must be true.');
 
   @override
   Widget build(BuildContext context) {
