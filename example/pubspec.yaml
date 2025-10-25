@@ -3,7 +3,7 @@ description: Example app for responsive_text package
 version: 1.0.0+1
 
 environment:
-  sdk: ">=3.4.3 <4.0.0" 
+  sdk: ">=3.2.0 <4.0.0"  # Lowered from >=3.4.3
   flutter: ">=1.17.0"
 
 dependencies:
