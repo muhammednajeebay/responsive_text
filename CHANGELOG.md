@@ -1,3 +1,8 @@
+## 1.0.4
+
+* Minor documentation changes 
+* Added live example demo
+
 ## 1.0.3
 
 * Added validation to prevent both `adaptToScreenWidth` and `adaptToContainer` from being true simultaneously

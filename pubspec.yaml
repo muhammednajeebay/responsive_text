@@ -1,6 +1,6 @@
 name: responsive_text_plus
 description: "A customizable text widget that dynamically scales its font size based on screen size or container dimensions, ensuring legibility across devices."
-version: 1.0.3
+version: 1.0.4
 homepage: https://github.com/muhammednajeebay/responsive_text
 documentation: https://muhammednajeebay.github.io/responsive_text/
 repository: https://github.com/muhammednajeebay/responsive_text
