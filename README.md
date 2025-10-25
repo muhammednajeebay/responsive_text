@@ -95,3 +95,4 @@ ResponsiveText(
 - **Bug Reports**: Please file issues at the GitHub repository
 - **Feature Requests**: We welcome suggestions for new features
 - **Contributions**: Pull requests are welcome
+- **Author** : [Muhammed Najeeb AY](https://najeebay.netlify.app/)
