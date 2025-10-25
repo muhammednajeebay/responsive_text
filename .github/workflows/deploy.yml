@@ -34,7 +34,7 @@ jobs:
       - name: Build web
         run: |
           cd example
-          flutter build web --release
+          flutter build web --release --base-href="/responsive_text/"
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
